@@ -57,6 +57,19 @@ namespace Grillbot.Modules
             await ReplyImageAsync(bitmap, "peepolove.png");
         }
 
+        [Command("rouska")]
+        [Summary("Vytvoří Stay FIT roušku přes avatar uživatele.")]
+        public async Task RouskaAsync(Discord.IUser forUser = null)
+        {
+            if (forUser == null)
+                forUser = Context.User;
+
+            var config = await GetMethodConfigAsync<RouskaConfig>(null, "rouska");
+            using var service = GetService<MemeImagesService>();
+            using var bitmap = await service.Service.PeepoAngryAsync(forUser, config);
+            await ReplyImageAsync(bitmap, "avatar_FITrouska.png");
+        }
+        
         [Command("peepoangry")]
         [Alias("pcbts", "peepoCantBelieveThisShit")]
         [Summary("PeepoAngry emote zírající na profilovku uživatele.")]

@@ -68,5 +68,11 @@ namespace Grillbot.Services.MemeImages
             var renderer = new PeepoAngryRenderer();
             return renderer.RenderAsync(forUser, config);
         }
+
+        public Task<Bitmap> RouskaAsync(IUser forUser, RouskaConfig config)
+        {
+            var renderer = new RouskaRenderer();
+            return renderer.RenderAsync(forUser, config);
+        }
     }
 }
